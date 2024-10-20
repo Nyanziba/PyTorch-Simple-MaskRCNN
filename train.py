@@ -70,7 +70,7 @@ def main(args):
 
         trained_epoch = epoch + 1
         print("training: {:.1f} s, evaluation: {:.1f} s".format(A, B))
-        pmr.collect_gpu_info("maskrcnn", [1 / iter_train, 1 / iter_eval])
+        #pmr.collect_gpu_info("maskrcnn", [1 / iter_train, 1 / iter_eval])
         print(eval_output.get_AP())
 
         pmr.save_ckpt(model, optimizer, trained_epoch, args.ckpt_path, eval_info=str(eval_output))

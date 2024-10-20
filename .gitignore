@@ -1,0 +1,5 @@
+image
+.venv
+pytorch_mask_rcnn/__pycache__
+pytorch_mask_rcnn/datasets/__pycache__
+pytorch_mask_rcnn/model/__pycache__

@@ -250,7 +250,18 @@ class Visualizer:
 
             if masks is not None:
                 for segment in masks[i].polygons:
-                    self.draw_polygon(segment.reshape(-1, 2), color, alpha=alpha)
+                    
+                    segment = np.array(segment)
+                    if segment.size == 0:
+                        # セグメントが空の場合は処理をスキップ
+                        print("Empty segment, skipping drawing.")
+                        continue  # または適切な処理を行う
+                    elif segment.size % 2 != 0:
+                        print("Segment size is not valid for reshaping, skipping.")
+                        continue
+                    else:
+                        # サイズが適切な場合のみ reshape
+                        segment = np.array(segment).reshape(-1, 2)
 
             if labels is not None:
                 # first get a box

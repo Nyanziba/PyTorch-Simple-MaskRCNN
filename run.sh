@@ -9,7 +9,7 @@ then
     data_dir="/data/voc2012/VOCdevkit/VOC2012/"
 elif [ $dataset = "coco" ]
 then
-    data_dir="/data/coco2017/"
+    data_dir="/home/kaya/PyTorch-Simple-MaskRCNN/image"
 fi
 
 

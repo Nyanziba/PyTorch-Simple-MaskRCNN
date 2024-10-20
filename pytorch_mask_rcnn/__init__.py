@@ -3,8 +3,9 @@ from .datasets import *
 from .engine import train_one_epoch, evaluate
 from .utils import *
 from .gpu import *
+from .visualizer import *
 
-try:
-    from .visualizer import *
-except ImportError:
-    pass
+# try:
+#     from .visualizer import *
+# except ImportError:
+#     pass
