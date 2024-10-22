@@ -10,8 +10,8 @@ import pytorch_mask_rcnn as pmr
     
     
 def main(args):
-    device = torch.device("cuda" if torch.cuda.is_available() and args.use_cuda else "cpu")
-    if device.type == "cuda": 
+    device = torch.device("cpu" if  args.use_cuda else "cpu")
+    if device.type == "mps": 
         pmr.get_gpu_prop(show=True)
     print("\ndevice: {}".format(device))
         
@@ -70,7 +70,8 @@ def main(args):
 
         trained_epoch = epoch + 1
         print("training: {:.1f} s, evaluation: {:.1f} s".format(A, B))
-        #pmr.collect_gpu_info("maskrcnn", [1 / iter_train, 1 / iter_eval])
+        if device.type=="cuda":
+            pmr.collect_gpu_info("maskrcnn", [1 / iter_train, 1 / iter_eval])
         print(eval_output.get_AP())
 
         pmr.save_ckpt(model, optimizer, trained_epoch, args.ckpt_path, eval_info=str(eval_output))
@@ -107,7 +108,7 @@ if __name__ == "__main__":
     parser.add_argument("--momentum", type=float, default=0.9)
     parser.add_argument("--weight-decay", type=float, default=0.0001)
     
-    parser.add_argument("--epochs", type=int, default=3)
+    parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--iters", type=int, default=10, help="max iters per epoch, -1 denotes auto")
     parser.add_argument("--print-freq", type=int, default=100, help="frequency of printing losses")
     args = parser.parse_args()
