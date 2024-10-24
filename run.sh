@@ -2,14 +2,14 @@
 
 
 dataset="coco"
-iters=200
+iters=500
 
 if [ $dataset = "voc" ]
 then
     data_dir="/data/voc2012/VOCdevkit/VOC2012/"
 elif [ $dataset = "coco" ]
 then
-    data_dir="/home/kaya/PyTorch-Simple-MaskRCNN/image"
+    data_dir="/Users/nyanziba/Assignment/PyTorch-Simple-MaskRCNN/image"
 fi
 
 
